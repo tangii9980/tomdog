@@ -1,6 +1,8 @@
 package com.tomdog.version1;
 
 import com.tomdog.utils.HttpUtil;
+import com.tomdog.version2.Request;
+import com.tomdog.version2.Response;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
 
@@ -28,11 +30,15 @@ public class MyFirstTomdogApp {
             Socket socket = serverSocket.accept();
 
             //write some service code...
-            serve(socket);
+            logger.info("tomdog serving");
+//            serve1(socket);
+            serve2(socket);
+
 
             //close connection
             close(socket);
         }
+
     }
 
     /**
@@ -40,7 +46,7 @@ public class MyFirstTomdogApp {
      * @param socket
      * @throws IOException
      */
-    private void serve(Socket socket) throws IOException {
+    private void serve1(Socket socket) throws IOException {
         OutputStream outputStream = socket.getOutputStream();
         String data = "hello,this is a tom dog!";
         String responeText = HttpUtil.getHttpHeader200(data.length()) + data;
@@ -54,6 +60,18 @@ public class MyFirstTomdogApp {
      */
     private void close(Socket socket) throws IOException {
         socket.close();
+    }
+
+    private void serve2(Socket accept) throws IOException {
+
+        InputStream inputStream = accept.getInputStream();
+
+        Request request = new Request(inputStream);
+
+        Response response = new Response(accept.getOutputStream());
+
+        response.outputHtml(request.getUrl());
+
     }
 
 
