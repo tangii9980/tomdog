@@ -69,3 +69,32 @@
 [INFO][2022-11-01 23:29:37,535][com.tomdog.version1.MyFirstTomdogApp]tomdog serving
 [INFO][2022-11-01 23:29:37,549][com.tomdog.version1.MyFirstTomdogApp]tomdog serving
 [INFO][2022-11-01 23:29:37,788][com.tomdog.version1.MyFirstTomdogApp]tomdog serving
+[INFO][2022-11-01 23:32:29,758][com.tomdog.version1.MyFirstTomdogApp]tomdog start on port:6667
+[INFO][2022-11-01 23:33:47,389][com.tomdog.version1.MyFirstTomdogApp]tomdog serving
+[INFO][2022-11-01 23:33:47,428][com.tomdog.version1.MyFirstTomdogApp]tomdog serving
+[INFO][2022-11-01 23:33:47,521][com.tomdog.version1.MyFirstTomdogApp]tomdog serving
+[INFO][2022-11-01 23:57:06,135][com.tomdog.version1.MyFirstTomdogApp]tomdog start on port:6667
+[INFO][2022-11-02 21:37:23,192][com.tomdog.version1.MyFirstTomdogApp]tomdog start on port:6667
+[INFO][2022-11-02 21:37:38,714][com.tomdog.version1.MyFirstTomdogApp]tomdog serving
+[INFO][2022-11-02 21:37:38,750][com.tomdog.version1.MyFirstTomdogApp]tomdog serving
+[INFO][2022-11-02 21:37:46,228][com.tomdog.version1.MyFirstTomdogApp]tomdog serving
+[INFO][2022-11-02 21:37:46,230][com.tomdog.version1.MyFirstTomdogApp]tomdog serving
+[INFO][2022-11-02 21:37:53,409][com.tomdog.version1.MyFirstTomdogApp]tomdog serving
+[INFO][2022-11-02 21:37:53,420][com.tomdog.version1.MyFirstTomdogApp]tomdog serving
+[INFO][2022-11-02 21:37:53,553][com.tomdog.version1.MyFirstTomdogApp]tomdog serving
+[INFO][2022-11-02 23:22:20,094][com.tomdog.version1.MyFirstTomdogApp]tomdog start on port:6667
+[INFO][2022-11-02 23:22:32,082][com.tomdog.version1.MyFirstTomdogApp]tomdog serving
+[INFO][2022-11-02 23:22:32,098][com.tomdog.version1.MyFirstTomdogApp]tomdog serving
+[INFO][2022-11-02 23:36:46,412][com.tomdog.version1.MyFirstTomdogApp]tomdog serving
+[INFO][2022-11-02 23:36:46,413][com.tomdog.version1.MyFirstTomdogApp]tomdog serving
+[INFO][2022-11-02 23:37:07,988][com.tomdog.version1.MyFirstTomdogApp]tomdog serving
+[INFO][2022-11-02 23:38:57,444][com.tomdog.version1.MyFirstTomdogApp]tomdog serving
+[INFO][2022-11-02 23:39:02,042][com.tomdog.version1.MyFirstTomdogApp]tomdog start on port:6667
+[INFO][2022-11-02 23:39:22,937][com.tomdog.version1.MyFirstTomdogApp]tomdog serving
+[INFO][2022-11-02 23:42:45,392][com.tomdog.version1.MyFirstTomdogApp]tomdog serving
+[INFO][2022-11-02 23:49:20,448][com.tomdog.version1.MyFirstTomdogApp]tomdog start on port:6667
+[INFO][2022-11-02 23:49:22,853][com.tomdog.version1.MyFirstTomdogApp]tomdog serving
+[INFO][2022-11-02 23:49:22,862][com.tomdog.version1.MyFirstTomdogApp]tomdog serving
+[INFO][2022-11-02 23:49:27,618][com.tomdog.version1.MyFirstTomdogApp]tomdog serving
+[INFO][2022-11-02 23:49:27,620][com.tomdog.version1.MyFirstTomdogApp]tomdog serving
+[INFO][2022-11-02 23:49:45,338][com.tomdog.version1.MyFirstTomdogApp]tomdog start on port:6667
