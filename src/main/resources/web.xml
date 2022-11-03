@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<web-app>
+    <servlet>
+        <servlet-name>myFirstServlet</servlet-name>
+        <servlet-class>com.tomdog.version3.MyFirstServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>myFirstServlet</servlet-name>
+        <url-pattern>/firstServlet</url-pattern>
+    </servlet-mapping>
+</web-app>

@@ -32,7 +32,12 @@ public class Request {
 //        System.out.println("=====>>url:" + url);
     }
 
+    public String getMethod() {
+        return method;
+    }
+
     public String getUrl() {
         return url;
     }
+
 }

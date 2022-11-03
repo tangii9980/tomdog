@@ -1,29 +1,36 @@
 package com.tomdog.version1;
 
 import com.tomdog.utils.HttpUtil;
+import com.tomdog.utils.WebXmlConifg;
 import com.tomdog.version2.Request;
 import com.tomdog.version2.Response;
+import com.tomdog.version3.HttpServlet;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
+import org.dom4j.DocumentException;
 
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.util.Map;
 
 public class MyFirstTomdogApp {
     private static Logger logger = LogManager.getLogger(MyFirstTomdogApp.class.getName());
     private int port;
+    private Map<String, HttpServlet> servletMap;
 
     public MyFirstTomdogApp(int port){
         this.port = port;
     }
 
 
-    public void start() throws IOException {
+    public void start() throws Exception {
         ServerSocket serverSocket = new ServerSocket(port);
         logger.info("tomdog start on port:"+port);
+
+        init();
 
         while(true){
             //receive the request
@@ -32,13 +39,20 @@ public class MyFirstTomdogApp {
             //write some service code...
             logger.info("tomdog serving");
 //            serve1(socket);
-            serve2(socket);
-
+//            serve2(socket);
+            serve3(socket);
 
             //close connection
             close(socket);
         }
 
+    }
+
+    private void init() throws ClassNotFoundException, InstantiationException, DocumentException, IllegalAccessException {
+
+        WebXmlConifg webXmlConifg = new WebXmlConifg();
+
+        servletMap = webXmlConifg.getServletMap();
     }
 
     /**
@@ -74,8 +88,23 @@ public class MyFirstTomdogApp {
 
     }
 
+    private void serve3(Socket accept) throws Exception {
 
-    public static void main(String[] args) throws IOException {
+        InputStream inputStream = accept.getInputStream();
+
+        Request request = new Request(inputStream);
+
+        Response response = new Response(accept.getOutputStream());
+
+        if(servletMap.get(request.getUrl()) == null) {
+            response.outputHtml(request.getUrl());
+        }else{
+            HttpServlet httpServlet = servletMap.get(request.getUrl());
+            httpServlet.service(request,response);
+        }
+    }
+
+    public static void main(String[] args) throws Exception {
         MyFirstTomdogApp myFirstTomdogApp = new MyFirstTomdogApp(6667);
         myFirstTomdogApp.start();
     }
