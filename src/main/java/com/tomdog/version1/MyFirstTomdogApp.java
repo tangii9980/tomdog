@@ -1,10 +1,12 @@
 package com.tomdog.version1;
 
+import com.sun.istack.internal.NotNull;
 import com.tomdog.utils.HttpUtil;
 import com.tomdog.utils.WebXmlConifg;
 import com.tomdog.version2.Request;
 import com.tomdog.version2.Response;
 import com.tomdog.version3.HttpServlet;
+import com.tomdog.version4.RequestProcessor;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
 import org.dom4j.DocumentException;
@@ -15,11 +17,13 @@ import java.io.OutputStream;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.Map;
+import java.util.concurrent.*;
 
 public class MyFirstTomdogApp {
     private static Logger logger = LogManager.getLogger(MyFirstTomdogApp.class.getName());
     private int port;
     private Map<String, HttpServlet> servletMap;
+    private ThreadPoolExecutor threadPoolExecutor;
 
     public MyFirstTomdogApp(int port){
         this.port = port;
@@ -32,6 +36,8 @@ public class MyFirstTomdogApp {
 
         init();
 
+        crateTreadPool();
+
         while(true){
             //receive the request
             Socket socket = serverSocket.accept();
@@ -40,10 +46,10 @@ public class MyFirstTomdogApp {
             logger.info("tomdog serving");
 //            serve1(socket);
 //            serve2(socket);
-            serve3(socket);
-
+//            serve3(socket);
+            process(socket);
             //close connection
-            close(socket);
+//            close(socket);
         }
 
     }
@@ -104,8 +110,34 @@ public class MyFirstTomdogApp {
         }
     }
 
+    private void process(Socket accept) {
+        RequestProcessor requestProcessor = new RequestProcessor(accept,servletMap);
+//        requestProcessor.start();
+        threadPoolExecutor.execute(requestProcessor);
+    }
+
+    private void crateTreadPool() {
+        int corePoolSize = 10;
+        int maximumPoolSize =50;
+        long keepAliveTime = 100L;
+        TimeUnit unit = TimeUnit.SECONDS;
+        BlockingQueue<Runnable> workQueue = new ArrayBlockingQueue<>(2);
+        ThreadFactory threadFactory = Executors.defaultThreadFactory();
+        RejectedExecutionHandler handler = new ThreadPoolExecutor.AbortPolicy();
+
+        threadPoolExecutor = new ThreadPoolExecutor(
+                corePoolSize,
+                maximumPoolSize,
+                keepAliveTime,
+                unit,
+                workQueue,
+                threadFactory,
+                handler
+        );
+    }
+
     public static void main(String[] args) throws Exception {
-        MyFirstTomdogApp myFirstTomdogApp = new MyFirstTomdogApp(6667);
+        MyFirstTomdogApp myFirstTomdogApp = new MyFirstTomdogApp(8081);
         myFirstTomdogApp.start();
     }
 }
