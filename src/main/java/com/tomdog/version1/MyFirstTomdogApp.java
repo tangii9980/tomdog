@@ -136,6 +136,12 @@ public class MyFirstTomdogApp {
         );
     }
 
+
+    private void doSthForTest(){
+        System.out.println("doSthForTest");
+    }
+
+
     public static void main(String[] args) throws Exception {
         MyFirstTomdogApp myFirstTomdogApp = new MyFirstTomdogApp(8081);
         myFirstTomdogApp.start();
