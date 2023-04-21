@@ -136,6 +136,11 @@ public class MyFirstTomdogApp {
         );
     }
 
+
+    public void testMainBranch(){
+        System.out.println("mainBranch");
+    }
+
     public static void main(String[] args) throws Exception {
         MyFirstTomdogApp myFirstTomdogApp = new MyFirstTomdogApp(8081);
         myFirstTomdogApp.start();
